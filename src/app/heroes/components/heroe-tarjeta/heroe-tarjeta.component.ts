@@ -8,6 +8,10 @@ import { Heroe } from '../../interface/heroes.interface';
     mat-card {
       margin-top: 20px;
     }
+
+    mat-card-actions button {
+      margin: 0 8px 8px;
+    }
   `]
 })
 export class HeroeTarjetaComponent  {
