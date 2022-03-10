@@ -1,23 +1,25 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Heroe } from '../interface/heroes.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroesService {
-  private apiURL = 'http://localhost:3000/heroes';
+  /* Variables de entorno */
+  private baseURL: string = environment.baseUrl; 
 
   /* Inyectamos el servicio para hacer las peticiones Http */
   constructor(private http: HttpClient) { }
 
   getHeroes(): Observable<Heroe[]> {
-    return this.http.get<Heroe[]>(this.apiURL);
+    return this.http.get<Heroe[]>(`${this.baseURL}/heroes`);
   }
 
   getHeroeById(id: string): Observable<Heroe> {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.baseURL}/heroes/${id}`;
 
     return this.http.get<Heroe>(url);
   }
